@@ -49,6 +49,7 @@
       <th scope="col">ID</th>
       <th scope="col">Total Produto</th>
       <th scope="col">Código Produto</th>
+      <th scope="col">Nome Produto</th>
       <th scope="col">Remover Produto</th>
     </tr>
   </thead>
@@ -60,6 +61,7 @@
           <th scope="row">{{$prod->ID}}</th>
           <td>{{$prod->Total_produto}}</td>
           <td>{{$prod->Produto}}</td>
+          <td>{{$prod->produto->Nome}}</td>
           <td><a href="{{route('ped.removeProduto', ['idPedido' => $pedido->id, 'idProduto' => $prod->ID])}}" class="btn btn-success">Remover</a></td>
         </tr>
         @endforeach
