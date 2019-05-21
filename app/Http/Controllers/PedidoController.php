@@ -38,60 +38,15 @@ class PedidoController extends Controller
         return view('pedidosnovo', ['pedido' =>$pedido]);
         //
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {      
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    
+    public function detalhesDoPedido($id){
+        
+        $indicePedido = IndicePedido::find($id);
+        $produtos = Pedido::where('indicePedido', $id)->get();
+        $qtdprodutosPedido = Pedido::where('indicePedido', $id)->count();
+        $valorTotal =$produtos->sum('Total_produto');
+        
+        return view('pedidosDetalhes', ['pedido' => $indicePedido, 'produtos' => $produtos, 'qtdProdutos' => $qtdprodutosPedido, 'totalProdutos' => $valorTotal]);
     }
     
     public function addprodutos($idPedido){
@@ -130,5 +85,17 @@ class PedidoController extends Controller
         $valorTotal =$produtos->sum('Total_produto');
         
         return view('pedidosNovo', ['pedido' => $indicePedido, 'produtos' => $produtos, 'qtdProdutos' => $qtdprodutosPedido, 'totalProdutos' => $valorTotal]);
-    }    
+    }  
+    
+    public function deletar($id){        
+        
+        $indicePedido = IndicePedido::find($id);
+        $deletar = Pedido::where('indicePedido', $id)->get();
+        $indicePedido->delete();
+        foreach ($deletar as $del) {
+            $del->delete();
+        }
+        
+        return redirect()->route('ped.index');
+    }
 }

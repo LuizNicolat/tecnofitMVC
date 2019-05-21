@@ -29,4 +29,5 @@ Route::prefix('pedidos')->group(function () {
     Route::get('salvarProdutos/{idPedido}/{idProduto}', 'PedidoController@inserirprodutosPedido')->name('prod.salvarProdutos');
     Route::get('removerProdutos/{idPedido}/{idProduto}', 'PedidoController@removerprodutosPedido')->name('ped.removeProduto');
     Route::get('detalhesPedido/{idPedido}', 'PedidoController@detalhesDoPedido')->name('ped.detalhesDoPedido');
+    Route::get('deletar/{idPedido}', 'PedidoController@deletar')->name('ped.delete');
 });

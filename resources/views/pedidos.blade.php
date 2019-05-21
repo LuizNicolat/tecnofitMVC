@@ -24,6 +24,7 @@
     <tr>
       <th scope="col">Código</th>
       <th scope="col">Data</th>
+      <th scope="col">Ação</th>
     </tr>
   </thead>
   <tbody>
@@ -33,6 +34,10 @@
         <tr>
           <th scope="row">{{$pedido->id}}</th>
           <td>{{$pedido->created_at}}</td>
+          <td>
+          	<a class="btn btn-primary" href="{{route('ped.detalhesDoPedido', ['idPedido' => $pedido->id])}}">Detalhes</a>
+          	<a class="btn btn-danger" href="{{route('ped.delete', ['idPedido' => $pedido->id])}}">Deletar</a>
+          </td>
         </tr>
         @endforeach
         @else  

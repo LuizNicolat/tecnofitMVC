@@ -21,7 +21,7 @@ class CreatePedidosTable extends Migration
             $table->unsignedBigInteger('indicePedido');
             
             $table->foreign('Produto')->references('id')->on('Produtos');
-            $table->foreign('indicePedido')->references('id')->on('indice_pedidos');
+            $table->foreign('indicePedido')->references('id')->on('indice_pedidos')->onDelete('cascade');
             
             $table->timestamps();
         });

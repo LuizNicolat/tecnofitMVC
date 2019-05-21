@@ -49,6 +49,7 @@
       <th scope="col">ID</th>
       <th scope="col">Total Produto</th>
       <th scope="col">Código Produto</th>
+      <th scope="col">Nome Produto</th>
       <th scope="col">Remover Produto</th>
     </tr>
   </thead>
@@ -60,6 +61,7 @@
           <th scope="row">{{$prod->ID}}</th>
           <td>{{$prod->Total_produto}}</td>
           <td>{{$prod->Produto}}</td>
+          <td>{{$prod->produto->Nome}}</td>
           <td><a href="{{route('ped.removeProduto', ['idPedido' => $pedido->id, 'idProduto' => $prod->ID])}}" class="btn btn-success">Remover</a></td>
         </tr>
         @endforeach
@@ -68,7 +70,6 @@
           <td colspan="5" class="text-center">Nada para Exibir!</td>      
         </tr>    
         @endif  
-        <button class="btn btn-primary">ABCD</button>
   @else  
   <tr>      
       <td colspan="5" class="text-center">Nada para Exibir!</td>      
@@ -76,6 +77,7 @@
     @endif
   </tbody>
 </table>
+		<a href="{{route('ped.index')}}" class="btn btn-primary">Finalizar</a>
 	</div>
 </div>
 

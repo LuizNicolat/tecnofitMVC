@@ -67,8 +67,7 @@
       <tr>      
           <td colspan="5" class="text-center">Nada para Exibir!</td>      
         </tr>    
-        @endif  
-        <button class="btn btn-primary">ABCD</button>
+        @endif
   @else  
   <tr>      
       <td colspan="5" class="text-center">Nada para Exibir!</td>      
@@ -76,6 +75,7 @@
     @endif
   </tbody>
 </table>
+		<a href="{{route('ped.index')}}" class="btn btn-primary">Finalizar</a>
 	</div>
 </div>
 
