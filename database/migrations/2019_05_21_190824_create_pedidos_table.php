@@ -15,10 +15,10 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->bigIncrements('ID');
-            $table->decimal('Total_produto', 6,2); 
+            $table->decimal('Total_produto', 6,2);
             $table->date('Data');
-            $table->unsignedBigInteger('Produto');            
-            $table->unsignedBigInteger('indicePedido');            
+            $table->unsignedBigInteger('Produto');
+            $table->unsignedBigInteger('indicePedido');
             
             $table->foreign('Produto')->references('id')->on('Produtos');
             $table->foreign('indicePedido')->references('id')->on('indice_pedidos');
