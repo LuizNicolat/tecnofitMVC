@@ -18,7 +18,7 @@ class CreateProdutosTable extends Migration
             $table->string('SKU', 255);
             $table->string('Nome', 255);
             $table->text('Descricao');
-            $table->decimal('preco', 8,2);            
+            $table->decimal('preco', 10,2);            
             $table->timestamps();
         });
     }
